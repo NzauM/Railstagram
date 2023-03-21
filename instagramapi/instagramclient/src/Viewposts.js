@@ -9,6 +9,25 @@ function Viewposts() {
       .then((data) => setPosts(data));  
   }, []);
 
+  // Click on like button to add to the likes table; post_id as id of post and user_id as 1 for now
+  
+  function handleLike(e){
+    const form_data = new FormData()
+    form_data.append("post_id",e.target.value)
+    form_data.append("user_id", 1)
+    fetch("http://127.0.0.1:4000/likes",{
+      method: "POST",
+      body: form_data
+    })
+    .then((res)=>{
+      if(res.ok){
+        console.log("Added")
+      }
+      else{
+        console.log("Error")
+      }
+    })
+  }
 
   console.log(posts);
 
@@ -21,6 +40,7 @@ function Viewposts() {
         <div >
           <img height={300} width={250} src={elem.image_url} alt="Post pic" />
           <h2>{elem.caption}</h2>
+          <Button value={elem.id} onClick={handleLike} variant="info">Like Post {elem.total_likes}</Button>
         </div>
         </Col>
       );

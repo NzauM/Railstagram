@@ -1,6 +1,12 @@
 class PostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :caption, :image_url
+  attributes :id, :caption, :image_url, :total_likes, :likes
+  # has_many :likes
+
+  def total_likes
+    post_likes = object.likes
+    post_likes.length()
+  end
 
 
   def image_url
