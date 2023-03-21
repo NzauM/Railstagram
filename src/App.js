@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import Viewposts from './Viewposts';
+import Mynav from './Mynav';
+import Addpost from './Addpost';
+import Login from './Login'
+import { useState, useEffect } from 'react';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Mynav/>
+        <h1>Karibu sana IG Mwitu</h1>
+        {/* <Login userLoggedIn={setUser}/> */}
+        {/* {user ? <> <Addpost /> <Viewposts/> </> : <Login userLoggedIn={setUser}/>} */}
+        You can Find All the Posts Here:
+        <Viewposts/>
+        <Addpost />
     </div>
   );
 }
